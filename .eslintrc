@@ -1,0 +1,28 @@
+{
+    "extends": "react-app",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "rules": {
+        "object-curly-spacing": [
+            "warn",
+            "always"
+        ],
+        "react/jsx-curly-spacing": [
+            "warn",
+            {
+                "when": "always",
+                "spacing": {
+                    "objectLiterals": "always"
+                }
+            }
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "no-useless-escape":"off",
+        "array-bracket-spacing": ["warn", "always"]
+    }
+}
