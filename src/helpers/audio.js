@@ -27,6 +27,7 @@ const recordAudio = () => {
                         });
             
                         mediaRecorder.stop();
+                        stream.getTracks().forEach(track => track.stop());
                     });
                 };
   
@@ -37,30 +38,39 @@ const recordAudio = () => {
 
 class AudioRecorder {
     constructor() {
-        this.recorder = null;
+        this.source = null;
         this.isRecording = false;
     }
 
     init = () => {
-        recordAudio().then(recorder => this.recorder = recorder);
+        return new Promise((resolve, reject) => {
+            recordAudio()
+                .then(recorder => {
+                    this.source = recorder;
+                    resolve();
+                });
+        });
     }
 
     startRecording = () => {
-        if (!this.recorder) {
-            console.warn('You must first initialize the recorder.');
+        this.isRecording = true;
+        if (this.source) {
+            this.source.start();
             return;
         }
-        this.recorder.start();
-        this.isRecording = true;
+
+        this.init().then(() => {
+            this.source.start();
+        });
     }
 
     stopRecording = () => {
-        console.log(this.recorder, this.isRecording)
-        if (!this.recorder || !this.isRecording) {
+        console.log(this.source, this.isRecording);
+        if (!this.source || !this.isRecording) {
             console.warn('You must first initialize the recorder.');
             return;
         }
-        this.recorder.stop().then(({ play }) => play());
+        this.source.stop().then(({ play }) => play());
     }
 }
 

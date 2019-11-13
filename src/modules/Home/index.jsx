@@ -1,5 +1,6 @@
 import React from 'react';
 import DisableScroll from 'ui/DisableScroll';
+import RecordingArea from 'ui/RecordingArea';
 import Button from 'ui/Button';
 
 const Home = props => (
@@ -9,6 +10,7 @@ const Home = props => (
                 <h2 className="home__title">Welcome to AuCodi</h2>
                 <Button block accent to="/record">Make a new record</Button>
             </div>
+            <RecordingArea />
         </div>
     </DisableScroll>
 );

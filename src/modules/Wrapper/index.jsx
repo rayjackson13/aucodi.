@@ -14,7 +14,6 @@ const Wrapper = props => {
 
     useEffect(() => {
         if (page.link !== pathname) {
-            console.log(pageDesc);
             const newPage = {
                 page: pathname,
                 prevPage: page.link,
