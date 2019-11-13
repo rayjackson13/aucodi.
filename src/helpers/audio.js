@@ -42,6 +42,9 @@ class AudioRecorder {
         this.isRecording = false;
     }
 
+    /**
+     * @private
+     */
     init = () => {
         return new Promise((resolve, reject) => {
             recordAudio()
@@ -54,23 +57,24 @@ class AudioRecorder {
 
     startRecording = () => {
         this.isRecording = true;
-        if (this.source) {
-            this.source.start();
-            return;
-        }
-
         this.init().then(() => {
             this.source.start();
         });
     }
 
-    stopRecording = () => {
+    stopRecording = (callback) => {
         console.log(this.source, this.isRecording);
         if (!this.source || !this.isRecording) {
             console.warn('You must first initialize the recorder.');
             return;
         }
-        this.source.stop().then(({ play }) => play());
+        this.source.stop().then(track => {
+            track.play();
+            if (callback) {
+                callback(track);
+            }
+        });
+        this.source = null;
     }
 }
 

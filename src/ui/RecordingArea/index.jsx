@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
+import { saveAudio } from 'actions/audio';
 import Recorder from 'helpers/audio';
 import Counter from 'ui/Counter';
 import styles from './RecordingArea.module.sass';
@@ -16,6 +18,7 @@ class RecordingArea extends React.Component {
     
     onClick = e => {
         const { recording } = this.state;
+        const { saveAudio } = this.props;
         this.setState({
             recording: !recording
         });
@@ -23,7 +26,7 @@ class RecordingArea extends React.Component {
             this.recorder.startRecording();
             return;
         }
-        this.recorder.stopRecording();
+        this.recorder.stopRecording(saveAudio);
     }
 
     render() {
@@ -53,4 +56,8 @@ class RecordingArea extends React.Component {
     }
 }
 
-export default RecordingArea;
+const mapDispatchToProps = {
+    saveAudio
+};
+
+export default connect(null, mapDispatchToProps)(RecordingArea);
