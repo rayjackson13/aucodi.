@@ -66,10 +66,7 @@ class Header extends React.Component {
                         <BurgerIcon />
                         <span className="visually-hidden">Open mobile menu</span>
                     </button>
-                    <button 
-                        className={ buttonStyle }
-                        onClick={ onButtonClick }
-                    >
+                    <button className="header__button">
                         <MoreIcon />
                         <span className="visually-hidden">Open mobile menu</span>
                     </button>

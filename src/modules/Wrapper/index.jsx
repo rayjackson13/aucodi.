@@ -1,32 +1,29 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setPage as setPageInfo } from 'actions/content';
 
 const Wrapper = props => {
     const { 
         children, 
-        auth, 
         location: { pathname }, 
         setPageInfo, 
         page, 
         pageTitle,
-        profileData,
-        profileLoading,
-        profileError,
-        getProfile,
-        logout
+        pageDesc
     } = props;
 
     useEffect(() => {
         if (page.link !== pathname) {
+            console.log(pageDesc);
             const newPage = {
                 page: pathname,
                 prevPage: page.link,
-                title: pageTitle
+                title: pageTitle,
+                description: pageDesc
             };
             setPageInfo(newPage);
         }
-    }, [ page, pageTitle, pathname, setPageInfo ]);
+    }, [ page, pageDesc, pageTitle, pathname, setPageInfo ]);
 
     return children;
 };

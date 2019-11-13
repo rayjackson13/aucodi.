@@ -6,7 +6,8 @@ export default [
   {
     path: '/',
     exact: true,
-    pageTitle: 'Home',
+    pageTitle: 'aucodi.',
+    pageDesc: 'Your favourite voice memos',
     component: Home
   },
   {

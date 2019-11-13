@@ -3,16 +3,18 @@ import { SET_PAGE, SET_MENU } from 'constants/content';
 const initialState = {
     page: '',
     title: '',
+    description: '',
     prevPage: '',
-    menuOpened: false
+    menuOpened: false,
 };
 
 const actionHandlers = {
-    [SET_PAGE] (state, { page, title, prevPage }) {
+    [SET_PAGE] (state, { page, title, description, prevPage }) {
         return {
             ...state,
             page,
             title,
+            description,
             prevPage,
             menuOpened: false
         };

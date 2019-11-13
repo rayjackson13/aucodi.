@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import getHistory from 'helpers/history';
-import { isLoginScreen, isRecommendedScreen } from 'helpers/locations';
+import { isRecommendedScreen } from 'helpers/locations';
 import Swiper from 'helpers/swipe';
 import Drawer from 'ui/Drawer';
 import Header from 'ui/Header';
@@ -99,7 +99,7 @@ class Content extends React.Component {
     }
 
     render() {
-        const { children, pageTitle = '', pageLink = '' } = this.props;
+        const { children, pageTitle = '', pageLink = '', pageDesc = '' } = this.props;
         const { drawerOpened } = this.state;
 
         const wrapperStyle = classNames({
@@ -122,6 +122,7 @@ class Content extends React.Component {
                         onButtonClick={ this.toggleMenu }
                         showsMenuButton={ 1 }
                         title={ pageTitle }
+                        description={ pageDesc }
                         { ...this.getHeaderProps() }
                     />
                     <main className={ mainStyle }>

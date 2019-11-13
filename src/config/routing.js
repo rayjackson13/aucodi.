@@ -5,7 +5,11 @@ import Wrapper from 'modules/Wrapper';
 import NotFound from 'modules/NotFound';
 
 const renderComponent = (route, props) => (
-    <Wrapper pageTitle={ route.pageTitle } { ...props }>
+    <Wrapper 
+        pageTitle={ route.pageTitle } 
+        pageDesc={ route.pageDesc }
+        { ...props }
+    >
         <route.component { ...props } />
     </Wrapper>
 );
