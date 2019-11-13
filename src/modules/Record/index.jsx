@@ -21,7 +21,7 @@ class Record extends React.Component {
 
     render () {
         return (
-            <DisableScroll fullScreen>
+            <DisableScroll>
                 <div className="record">
                     <div className="container container--limited record__wrap">
                         <h2 className="record__title">New Recording</h2>

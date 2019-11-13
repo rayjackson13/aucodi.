@@ -21,26 +21,28 @@ const Drawer = ({ visible = false, onItemClick }) => {
         <aside className={ style }>
             <DisableScroll full classes="drawer__scroll-content">
                 <div className="drawer-logo">
-                    <img className="drawer-logo__img" src={ Logo } />
+                    <img className="drawer-logo__img" src={ Logo } alt="" />
                 </div>
-                <div className="drawer-block drawer-block--padding">
-                    <nav>
-                        <ul className="drawer-menu">
-                            { menu.map((val, idx) => (
-                                <MenuItem 
-                                    key={ idx } 
-                                    onLogoutClick={ onLogoutClick }
-                                    onItemClick={ onItemClick }
-                                    { ...val }
-                                />
-                            )) }
-                        </ul>
-                    </nav>
-                </div>
-                <div className="drawer-copyright">
-                    <p className="drawer-copyright__text">
-                        © Copyright Ray Jackson 2019
-                    </p>
+                <div className="drawer-wrap">
+                    <div className="drawer-block drawer-block--padding">
+                        <nav>
+                            <ul className="drawer-menu">
+                                { menu.map((val, idx) => (
+                                    <MenuItem 
+                                        key={ idx } 
+                                        onLogoutClick={ onLogoutClick }
+                                        onItemClick={ onItemClick }
+                                        { ...val }
+                                    />
+                                )) }
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className="drawer-copyright">
+                        <p className="drawer-copyright__text">
+                            © Copyright Ray Jackson 2019
+                        </p>
+                    </div>
                 </div>
             </DisableScroll>
         </aside>

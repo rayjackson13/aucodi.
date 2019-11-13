@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ReactComponent as BurgerIcon } from 'assets/svg/burger.svg';
+import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 
 const isTransparentPage = link => {
     // eslint-disable-next-line
@@ -32,7 +33,15 @@ class Header extends React.Component {
 
     render() {
         const { expanded } = this.state;
-        const { onButtonClick, transparent = false, visible = false, title, pageLink, showsMenuButton } = this.props;
+        const { 
+            onButtonClick, 
+            transparent = false, 
+            visible = false, 
+            title, 
+            description, 
+            pageLink, 
+            showsMenuButton
+        } = this.props;
         
         const headerStyle = classNames({
             'header': true,
@@ -49,14 +58,26 @@ class Header extends React.Component {
 
         return (
             <header className={ headerStyle } ref={ ref => this.ref = ref }>
-                <button 
-                    className={ buttonStyle }
-                    onClick={ onButtonClick }
-                >
-                    <BurgerIcon />
-                    <span className="visually-hidden">Open mobile menu</span>
-                </button>
-                <h1 className="header__title">{ title }</h1>
+                <div className="header__menu">
+                    <button 
+                        className={ buttonStyle }
+                        onClick={ onButtonClick }
+                    >
+                        <BurgerIcon />
+                        <span className="visually-hidden">Open mobile menu</span>
+                    </button>
+                    <button 
+                        className={ buttonStyle }
+                        onClick={ onButtonClick }
+                    >
+                        <MoreIcon />
+                        <span className="visually-hidden">Open mobile menu</span>
+                    </button>
+                </div>
+                <div className="header__content">
+                    <h1 className="header__title">{ title }</h1>
+                    <p className="header__description">{ description }</p>
+                </div>
             </header>
         );
     }

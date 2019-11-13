@@ -107,7 +107,7 @@ class Content extends React.Component {
         });
 
         const mainStyle = classNames({
-            'nimbly-content__main': true,
+            'nimbly-content__main nimbly-content__main--padding': true,
             'nimbly-content--transformed': drawerOpened
         });
 

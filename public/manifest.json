@@ -1,6 +1,6 @@
 {
-  "name": "Nimbly",
-  "short_name": "Nimbly",
+  "name": "aucodi.",
+  "short_name": "aucodi.",
   "icons": [
       {
           "src": "/fav/android-chrome-192x192.png",
@@ -15,7 +15,6 @@
   ],
   "theme_color": "#1d224b",
   "background_color": "#1d224b",
-  "start_url": "https://nimbly.a2test.com",
   "display": "standalone",
   "orientation": "portrait"
 }
