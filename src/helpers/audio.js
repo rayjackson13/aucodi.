@@ -14,7 +14,7 @@ const recordAudio = () => {
                 };
         
                 const stop = () => {
-                    return new Promise(resolve => {
+                    return new Promise(async resolve => {
                         mediaRecorder.addEventListener("stop", () => {
                             const audioBlob = new window.Blob(audioChunks);
                             const audioUrl = URL.createObjectURL(audioBlob);
@@ -22,8 +22,29 @@ const recordAudio = () => {
                             const play = () => {
                                 audio.play();
                             };
+                            audio.addEventListener('loadedmetadata', function() {
+                                if (audio.duration === Infinity){
+                                    audio.currentTime = Number.MAX_SAFE_INTEGER;
+                                    audio.ontimeupdate = () => {
+                                        audio.ontimeupdate = null;
+                                        resolve({ 
+                                            audioBlob, 
+                                            audioUrl, 
+                                            play,
+                                            duration: audio.duration
+                                        });
+                                        audio.currentTime = 0;
+                                    };
+                                    return;
+                                }
             
-                            resolve({ audioBlob, audioUrl, play });
+                                resolve({ 
+                                    audioBlob, 
+                                    audioUrl, 
+                                    play,
+                                    duration: audio.duration
+                                });
+                            });
                         });
             
                         mediaRecorder.stop();

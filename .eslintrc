@@ -23,6 +23,8 @@
             "always"
         ],
         "no-useless-escape":"off",
-        "array-bracket-spacing": ["warn", "always"]
+        "array-bracket-spacing": ["warn", "always"],
+        "max-lines": ["warn", 200],
+        "indent": ["warn", 4]
     }
 }

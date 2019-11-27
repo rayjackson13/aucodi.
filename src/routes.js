@@ -1,5 +1,5 @@
 import NotFound from 'modules/NotFound';
-import Home from 'modules/Home';
+import Home from 'containers/Home';
 import Record from 'modules/Record';
 
 export default [

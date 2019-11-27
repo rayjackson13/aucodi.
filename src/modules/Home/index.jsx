@@ -1,16 +1,13 @@
 import React from 'react';
 import DisableScroll from 'ui/DisableScroll';
 import RecordingArea from 'ui/RecordingArea';
-import Button from 'ui/Button';
+import List from 'ui/List';
 
-const Home = props => (
+const Home = ({ tracks }) => (
     <DisableScroll>
         <div className="home">
-            <div className="container container--limited home__wrap">
-                <h2 className="home__title">Welcome to AuCodi</h2>
-                <Button block accent to="/record">Make a new record</Button>
-            </div>
             <RecordingArea />
+            <List tracks={ tracks } />
         </div>
     </DisableScroll>
 );

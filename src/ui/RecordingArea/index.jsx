@@ -18,7 +18,6 @@ class RecordingArea extends React.Component {
     
     onClick = e => {
         const { recording } = this.state;
-        const { saveAudio } = this.props;
         this.setState({
             recording: !recording
         });
@@ -26,7 +25,16 @@ class RecordingArea extends React.Component {
             this.recorder.startRecording();
             return;
         }
-        this.recorder.stopRecording(saveAudio);
+        this.recorder.stopRecording(this.saveAudio);
+    }
+
+    saveAudio = track => {
+        const { saveAudio } = this.props;
+        saveAudio({
+            ...track,
+            name: "New Recording 1",
+            date: new Date()
+        });
     }
 
     render() {
