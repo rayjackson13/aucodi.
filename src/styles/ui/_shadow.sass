@@ -1,0 +1,25 @@
+.aucodi-shadow
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background-color: rgba(33, 33, 33, 0.5)
+    z-index: 1
+    animation: applyShadow .125s ease-in-out
+
+    &--hidden
+        animation: removeShadow .125s ease-in-out
+        background-color: transparent
+
+@keyframes applyShadow
+    from
+        background-color: transparent
+    to
+        background-color: rgba(33, 33, 33, 0.5)
+        
+@keyframes removeShadow
+    from
+        background-color: rgba(33, 33, 33, 0.5)
+    to
+        background-color: transparent

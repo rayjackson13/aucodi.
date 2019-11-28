@@ -6,6 +6,8 @@
     height: 46px
     padding: 3px
     position: relative
+    border: 0
+    background: 0
 
     &::before
         content: ''
@@ -27,6 +29,9 @@
         background-color: $record
         border-radius: 50%
         transition: all .25s
+
+    &:focus
+        outline: 0
         
 
 .data
@@ -49,11 +54,16 @@
     line-height: 1
     margin-bottom: 27px
 
-.area
+.wrap
     position: fixed
     width: 100vw
     bottom: 0
     left: 0
+    z-index: 1
+
+.area
+    max-width: 425px
+    margin: 0 auto
     text-align: center
     padding: 0.8125rem 1.25rem
     background-color: #212121

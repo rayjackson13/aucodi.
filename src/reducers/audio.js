@@ -64,7 +64,7 @@ const actionHandlers = {
     [SAVE_AUDIO] (state, payload) {
         return {
             ...state,
-            tracks: state.tracks.concat(payload)
+            tracks: [ payload ].concat(state.tracks)
         };
     }
 };

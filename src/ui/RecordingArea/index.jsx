@@ -22,10 +22,28 @@ class RecordingArea extends React.Component {
             recording: !recording
         });
         if (!recording) {
-            this.recorder.startRecording();
+            this.start();
             return;
         }
+        this.stop();
+    }
+
+    start = () => {
+        this.recorder.startRecording();
+        const shadow = document.createElement('div');
+        shadow.className = 'aucodi-shadow';
+        const parent = this.ref.parentNode;
+        parent.insertBefore(shadow, this.ref);
+        this.shadow = shadow;
+    }
+
+    stop = () => {
         this.recorder.stopRecording(this.saveAudio);
+        this.shadow.classList.add('aucodi-shadow--hidden');
+        setTimeout(() => {
+            const parent = this.ref.parentNode;
+            parent.removeChild(this.shadow);
+        }, 125);
     }
 
     saveAudio = track => {
@@ -45,20 +63,25 @@ class RecordingArea extends React.Component {
         });
 
         return (
-            <aside className={ blockStyle }>
-                <div className={ styles.data }>
-                    <div className={ styles.opacity }>
-                        <h3 className={ styles.title }>New Recording 1</h3>
-                        { recording && <Counter classes={ styles.time } /> }
+            <aside 
+                className={ styles.wrap } 
+                ref={ node => this.ref = node }
+            >
+                <div className={ blockStyle }>
+                    <div className={ styles.data }>
+                        <div className={ styles.opacity }>
+                            <h3 className={ styles.title }>New Recording 1</h3>
+                            { recording && <Counter classes={ styles.time } /> }
+                        </div>
                     </div>
-                </div>
-                <button 
-                    type="button" 
-                    className={ styles.button }
-                    onClick={ this.onClick }
-                >
+                    <button 
+                        type="button" 
+                        className={ styles.button }
+                        onClick={ this.onClick }
+                    >
                     Record
-                </button>
+                    </button>
+                </div>
             </aside>
         );
     }
