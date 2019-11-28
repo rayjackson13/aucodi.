@@ -9,7 +9,7 @@ import setRoutes from './config/routing';
 import * as serviceWorker from './config/serviceWorker';
 import getHistory from 'helpers/history';
 import lockOrientation from 'helpers/orientation';
-import processDevice from 'helpers/device';
+import processDevice, { processHeight } from 'helpers/device';
 import './styles/index.sass';
 import '@fortawesome/fontawesome-free/js/all.js';
 
@@ -17,6 +17,7 @@ const target = document.querySelector('#app');
 const history = getHistory();
 lockOrientation();
 processDevice();
+processHeight();
 
 const app = (
     <Router history={ history }>

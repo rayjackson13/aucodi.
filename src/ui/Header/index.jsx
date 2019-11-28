@@ -47,7 +47,7 @@ class Header extends React.Component {
             'header': true,
             'header--out': !visible,
             'header--fixed': !expanded,
-            'nimbly-content--transformed': transparent,
+            'aucodi-content--transformed': transparent,
             'header--transparent': isTransparentPage(pageLink)
         });
 

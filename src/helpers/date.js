@@ -17,7 +17,11 @@ export const getDateString = date => {
     today.setMinutes(0);
     today.setSeconds(0);
     if (date > today) {
-        return `${ date.getHours() }:${ date.getMinutes() }`;
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const outputHours = hours < 10 ? '0' + hours : hours;
+        const outputMinutes = minutes < 10 ? '0' + minutes : minutes;
+        return `${ outputHours }:${ outputMinutes }`;
     }
     const startOfWeek = today;
     startOfWeek.setDate(startOfWeek.getDate() - (startOfWeek.getDay() - 1));

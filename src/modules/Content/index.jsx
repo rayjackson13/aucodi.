@@ -103,18 +103,18 @@ class Content extends React.Component {
         const { drawerOpened } = this.state;
 
         const wrapperStyle = classNames({
-            'nimbly-content': true
+            'aucodi-content': true
         });
 
         const mainStyle = classNames({
-            'nimbly-content__main nimbly-content__main--padding': true,
-            'nimbly-content--transformed': drawerOpened
+            'aucodi-content__main aucodi-content__main--padding': true,
+            'aucodi-content--transformed': drawerOpened
         });
 
         return (
             <div className={ wrapperStyle }>
                 <Drawer visible={ drawerOpened } onItemClick={ this.hideMenu } />
-                <div className="nimbly-content__wrap" ref={ ref => this.ref = ref }>
+                <div className="aucodi-content__wrap" ref={ ref => this.ref = ref }>
                     <Header 
                         visible={ true }
                         transparent={ drawerOpened }

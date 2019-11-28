@@ -6,17 +6,30 @@ $subtext: #757575
     margin: 0
     list-style: none
     padding-top: .25rem
+    height: calc(100vh - 230px)
+    height: calc(var(--vh, 1vh) * 100 - 230px)
 
 .item
-    padding: 10px 1rem
+    padding: 14px 1rem 15px
     color: $subtext
+
+    &:not(:last-child) 
+        position: relative 
+
+        &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            height: 1px
+            width: calc(100% - 2rem)
+            background: rgba(189, 189, 189, 0.5)
 
 .itemContainer
     display: flex
     align-items: flex-end
 
     &:first-child
-        padding-bottom: 6px
+        padding-bottom: 10px
 
 .title
     color: $text

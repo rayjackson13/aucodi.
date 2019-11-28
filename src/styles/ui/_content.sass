@@ -1,17 +1,16 @@
-.nimbly-content
+.aucodi-content
     position: relative
     transition: all .25s
-    min-height: 100vh
+    max-height: 100vh
     overflow: hidden
 
     &__wrap
         height: 100%
-        min-height: 100vh
+        max-height: 100vh
 
     &__main
+        height: calc(100% - 158px)
         transition: all .25s
-        &--padding
-            padding-top: 158px
 
     &--transformed
         transform: translateX(240px)
