@@ -9,8 +9,12 @@
         max-height: 100vh
 
     &__main
-        height: calc(100% - 158px)
         transition: all .25s
+
+        &--padding
+            padding-top: 158px
+            height: calc(100vh - 158px)
+            height: calc(100 * var(--vh) - 158px)
 
     &--transformed
         transform: translateX(240px)

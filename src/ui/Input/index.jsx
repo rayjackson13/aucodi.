@@ -63,14 +63,16 @@ class Input extends React.Component {
             'input': true,
             'input--with-icon': icon,
             'input--focused': value || focused,
-            [classes]: true
+            [classes]: !!classes
         });
 
         return (
             <div className={ wrapStyle }>
-                <i className={ styles.icon }>
-                    { icon.render() }
-                </i>
+                {icon && (
+                    <i className={ styles.icon }>
+                        { icon.render() }
+                    </i>
+                )}
                 <input
                     name={ id }
                     value={ value }

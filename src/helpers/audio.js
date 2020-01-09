@@ -84,7 +84,6 @@ class AudioRecorder {
     }
 
     stopRecording = (callback) => {
-        console.log(this.source, this.isRecording);
         if (!this.source || !this.isRecording) {
             console.warn('You must first initialize the recorder.');
             return;

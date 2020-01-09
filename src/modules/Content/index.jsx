@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import getHistory from 'helpers/history';
-import { isRecommendedScreen } from 'helpers/locations';
+import { isLoginScreen } from 'helpers/locations';
 import Swiper from 'helpers/swipe';
 import Drawer from 'ui/Drawer';
 import Header from 'ui/Header';
@@ -32,23 +32,11 @@ class Content extends React.Component {
         });
     }
 
-    hideMenuSwipe = (e) => {
-        const { pageLink = '' } = this.props;
-        if (isRecommendedScreen(pageLink)) {
-            if (this.isSwipeProhibited(e)) {
-                return;
-            }
-        }
+    hideMenuSwipe = () => {
         this.hideMenu();
     }
 
-    showMenuSwipe = (e) => {
-        const { pageLink = '' } = this.props;
-        if (isRecommendedScreen(pageLink)) {
-            if (this.isSwipeProhibited(e)) {
-                return;
-            }
-        }
+    showMenuSwipe = () => {
         this.showMenu();
     }
 
@@ -99,24 +87,26 @@ class Content extends React.Component {
     }
 
     render() {
-        const { children, pageTitle = '', pageLink = '', pageDesc = '' } = this.props;
+        const { children, auth, pageTitle = '', pageLink = '', pageDesc = '' } = this.props;
         const { drawerOpened } = this.state;
+        const isAuthorized = auth && !isLoginScreen(pageLink);
 
         const wrapperStyle = classNames({
             'aucodi-content': true
         });
 
         const mainStyle = classNames({
-            'aucodi-content__main aucodi-content__main--padding': true,
-            'aucodi-content--transformed': drawerOpened
+            'aucodi-content__main': true,
+            'aucodi-content__main--padding': isAuthorized,
+            'aucodi-content--transformed': drawerOpened && isAuthorized
         });
 
         return (
             <div className={ wrapperStyle }>
-                <Drawer visible={ drawerOpened } onItemClick={ this.hideMenu } />
+                <Drawer visible={ drawerOpened && isAuthorized } onItemClick={ this.hideMenu } />
                 <div className="aucodi-content__wrap" ref={ ref => this.ref = ref }>
                     <Header 
-                        visible={ true }
+                        visible={ isAuthorized }
                         transparent={ drawerOpened }
                         pageLink={ pageLink }
                         onButtonClick={ this.toggleMenu }

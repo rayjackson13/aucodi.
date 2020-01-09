@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setPage as setPageInfo } from 'actions/content';
+import { isLoginScreen } from 'helpers/locations';
 
 const Wrapper = props => {
     const { 
         children, 
+        auth,
         location: { pathname }, 
         setPageInfo, 
         page, 
@@ -24,10 +27,17 @@ const Wrapper = props => {
         }
     }, [ page, pageDesc, pageTitle, pathname, setPageInfo ]);
 
+    if (!auth && !isLoginScreen(pathname)) {
+        return (
+            <Redirect to="/auth" />
+        );
+    }
+
     return children;
 };
 
-const mapStateToProps = ({ content }) => ({
+const mapStateToProps = ({ content, auth }) => ({
+    auth: auth.token,
     page: {
         link: content.page,
         prevPage: content.prevPage
