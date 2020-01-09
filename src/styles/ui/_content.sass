@@ -1,7 +1,7 @@
 .aucodi-content
     position: relative
     transition: all .25s
-    max-height: 100vh
+    height: 100vh
     overflow: hidden
 
     &__wrap
@@ -10,11 +10,10 @@
 
     &__main
         transition: all .25s
+        position: relative
 
         &--padding
             padding-top: 158px
-            height: calc(100vh - 158px)
-            height: calc(100 * var(--vh) - 158px)
 
     &--transformed
         transform: translateX(240px)

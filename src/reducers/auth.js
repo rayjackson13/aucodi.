@@ -33,7 +33,8 @@ const actionHandlers = {
     },
     [LOGOUT] () {
         return {
-            ...initialState
+            token: undefined,
+            error: null
         };
     }
 };

@@ -58,6 +58,6 @@ export const register = (data, callback) => async dispatch => {
 };
 
 export const logout = () => async dispatch => {
+    CookieHelper.deleteCookie('auth');
     dispatch({ type: LOGOUT });
-    CookieHelper.deleteCookie('token');
 };

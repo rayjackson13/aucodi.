@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
-
+import { logout } from 'actions/auth';
 import DisableScroll from 'ui/DisableScroll';
 import Logo from 'assets/img/banner.png';
 import menu from './menu';
 import MenuItem from './MenuItem';
 
-const Drawer = ({ visible = false, onItemClick }) => {
+const Drawer = ({ visible = false, onItemClick, logout }) => {
     const style = classNames({
         "drawer": true,
         "drawer--hidden": !visible
@@ -14,7 +15,7 @@ const Drawer = ({ visible = false, onItemClick }) => {
 
     const onLogoutClick = (e) => {
         onItemClick(e);
-        // logout(resetProfile);
+        logout();
     };
 
     return (
@@ -49,4 +50,8 @@ const Drawer = ({ visible = false, onItemClick }) => {
     );
 };
 
-export default Drawer;
+const mapDispatchToProps = {
+    logout
+};
+
+export default connect(null, mapDispatchToProps)(Drawer);
