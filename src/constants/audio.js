@@ -1,1 +1,5 @@
 export const SAVE_AUDIO = 'SAVE_AUDIO';
+
+export const GET_TRACKS = 'GET_TRACKS';
+export const GET_TRACKS_SUCCESS = 'GET_TRACKS_SUCCESS';
+export const GET_TRACKS_ERROR = 'GET_TRACKS_ERROR';

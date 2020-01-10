@@ -1,9 +1,14 @@
 import { connect } from 'react-redux';
-import Home from 'modules/Home';
+import Folders from 'modules/Home';
+import { getFolders } from 'actions/folders';
 
-const mapStateToProps = ({ audio }) => ({
-    tracks: audio.tracks
+const mapStateToProps = ({ folders }) => ({
+    folders: folders.data 
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = {
+    getFolders
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Folders);
 

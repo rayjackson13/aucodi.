@@ -1,14 +1,19 @@
-import React from 'react';
-import RecordingArea from 'ui/RecordingArea';
+import React, { useEffect } from 'react';
 import List from 'ui/List';
 
-const Home = ({ tracks }) => (
-    // <div className="home">
-    <React.Fragment>
-        <List tracks={ tracks } />
-        <RecordingArea />
-    </React.Fragment>
-    // </div>
-);
+const Home = props => {
+    const { folders, error, getFolders } = props;
+    useEffect(() => {
+        if (!folders && !error) {
+            getFolders();
+        }
+    });
+    
+    return (
+        <React.Fragment>
+            <List data={ folders || [] } type="folders" />
+        </React.Fragment>
+    );
+};
 
 export default Home;

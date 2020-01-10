@@ -1,6 +1,6 @@
 export default [
     {
-        to: '/',
+        to: '/app',
         title: 'Home',
         icon: null,
     },

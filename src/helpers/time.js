@@ -25,6 +25,24 @@ export const getMinutes = time => {
     return minutes;
 };
 
+export const getCutMinutes = time => {
+    const minutes = Math.floor(time / 60000) % 60;
+    if (minutes < 10) {
+        return '0' + minutes;
+    }
+    
+    return minutes;
+};
+
+export const getHours = time => {
+    const hours = Math.floor(time / 3600000);
+    if (hours < 10) {
+        return '0' + hours;
+    }
+    
+    return hours;
+};
+
 export const timeToString = time => {
     const minutes = getMinutes(time);
     const seconds = getSeconds(time);

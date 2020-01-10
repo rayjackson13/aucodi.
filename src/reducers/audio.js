@@ -1,63 +1,8 @@
 import { SAVE_AUDIO } from 'constants/audio';
 
 const initialState = {
-    tracks: [
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-        {
-            duration: 1.24,
-            name: 'Fucking Recording 1',
-            date: new Date()
-        },
-    ]
+    tracks: null,
+    error: null
 };
 
 const actionHandlers = {

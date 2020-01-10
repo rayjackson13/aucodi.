@@ -3,7 +3,7 @@ import { getDateString } from 'helpers/date';
 import { getMinutes, getSeconds } from 'helpers/time';
 import styles from '../List.module.sass';
 
-const Item = ({ duration, name, date }) => {
+const Track = ({ duration, name, date }) => {
     const time = duration * 1000;
     const durationString = `${ getMinutes(time) }:${ getSeconds(time) }`;
     return (
@@ -22,4 +22,4 @@ const Item = ({ duration, name, date }) => {
     );
 };
 
-export default Item;
+export default Track;

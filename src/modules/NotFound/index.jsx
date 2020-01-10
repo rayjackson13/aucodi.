@@ -4,7 +4,7 @@ import Button from 'ui/Button';
 import DisableScroll from 'ui/DisableScroll';
 
 const goBack = ({ prevPage }) => {
-    return prevPage || '/';
+    return prevPage || '/app';
 };
 
 const NotFound = props => (

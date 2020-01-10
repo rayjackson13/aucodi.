@@ -1,27 +1,31 @@
-import NotFound from 'modules/NotFound';
+import NotFound from 'containers/NotFound';
 import Home from 'containers/Home';
-import Record from 'modules/Record';
+import Memos from 'containers/Memos';
 import Auth from 'containers/Auth';
 
 export default [
     {
-        path: '/',
+        path: '/app',
         exact: true,
         pageTitle: 'aucodi.',
         pageDesc: 'Your favourite voice memos',
         component: Home
     },
     {
-        path: '/auth',
-        exact: true,
-        component: Auth
+        path: '/app/:name',
+        component: Memos
     },
     {
-        path: '/record',
+        path: '/auth',
         exact: true,
-        pageTitle: 'Home',
-        component: Record
+        component: Auth 
     },
+    // {
+    //     path: '/record',
+    //     exact: true,
+    //     pageTitle: 'Home',
+    //     component: Record
+    // },
     {
         path: '*',
         pageTitle: 'Page Unavailable',

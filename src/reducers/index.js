@@ -5,12 +5,14 @@ import thunk from 'redux-thunk';
 import auth from './auth';
 import content from './content';
 import audio from './audio';
+import folders from './folders';
 
 export const store = createStore(
     combineReducers({
         auth,
         content,
-        audio
+        audio,
+        folders
     }),
     composeWithDevTools(applyMiddleware(thunk))
 );

@@ -13,7 +13,7 @@ instance.interceptors.request.use(
     config => {
         config.headers.Authorization = config.headers.Authorization || '';
 
-        const token = CookieHelper.getCookie('token');
+        const token = CookieHelper.getCookie('auth');
         if (token) {
             config.headers.Authorization = `Bearer ${ token }`;
         }
@@ -45,10 +45,10 @@ instance.interceptors.response.use(
 
         try {
             const response = await refreshToken();
-            CookieHelper.setCookie('token', response.data.token);
+            CookieHelper.setCookie('auth', response.data.token);
             return instance(error.config);
         } catch(error) {
-            CookieHelper.deleteCookie('token');
+            CookieHelper.deleteCookie('auth');
             if (history.location.pathname !== authPath) {
                 history.replace(authPath);
             }
@@ -59,7 +59,7 @@ instance.interceptors.response.use(
 
 const refreshToken = () => {
     return instance.post('/login/switchToken', {
-        token: CookieHelper.getCookie('token')
+        token: CookieHelper.getCookie('auth')
     });
 };
 

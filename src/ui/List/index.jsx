@@ -1,16 +1,22 @@
 import React from 'react';
 import DisableScroll from 'ui/DisableScroll';
-import Item from './Item';
+import Track from './Track';
+import Folder from './Folder';
 import styles from './List.module.sass';
 
-const List = ({ tracks }) => (
+const List = ({ data, type }) => (
     <ul className={ styles.wrap }>
         <DisableScroll classes="scrollable--recording">
-            {
-                tracks.map((val, idx) => (
-                    <Item key={ idx } { ...val } />
+            {type === 'tracks' && (
+                data.map((val, idx) => (
+                    <Track key={ idx } { ...val } />
                 ))
-            }
+            )}
+            {type === 'folders' && (
+                data.map((val, idx) => (
+                    <Folder key={ idx } { ...val } />
+                ))
+            )}
         </DisableScroll>
     </ul>
 );

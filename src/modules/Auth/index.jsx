@@ -17,7 +17,7 @@ class Auth extends React.Component {
 
     onSuccess = () => {
         const { history } = this.props;
-        history.push('/');
+        history.push('/app');
     }
 
     render() {
